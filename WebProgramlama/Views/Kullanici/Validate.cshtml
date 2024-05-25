@@ -1,0 +1,33 @@
+﻿@model User
+
+@{
+    Layout = "_Layout2";
+    ViewData["Title"] = "Doğrulama Bekleniyor";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="card-title">Kayıt Onayı</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Merhaba @Model.FirstName @Model.LastName</h4>
+                    <p>Kayıt işleminiz başarıyla tamamlandı. Şimdi, bir yönetici tarafından onaylanmanız gerekiyor.</p>
+                    <p>Yöneticinin onayı sonrasında, sistemimize giriş yapabilirsiniz. Lütfen bekleyiniz.</p>
+                    <div class="alert alert-info mt-4">
+                        <strong>Bilgilendirme:</strong> Onay süreci genellikle kısa sürede tamamlanır. Bu süre içinde herhangi bir sorun yaşarsanız, lütfen bizimle iletişime geçin.
+                    </div>
+                    <a href="@Url.Action("Index", "Home")" class="btn btn-primary mt-3">Ana Sayfaya Dön</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        
+    </script>
+}

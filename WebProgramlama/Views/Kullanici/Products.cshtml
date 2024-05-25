@@ -1,0 +1,50 @@
+﻿@model listProducts
+@{
+    Layout = "userLayout";
+    ViewData["Title"] = "Products";
+}
+
+<h1 class="text-center mb-4" style="color: #5A7D9A;">Products</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Ürün Adı</th>
+                        <th scope="col">Miktar</th>
+                        <th scope="col">İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var product in Model.Products)
+                    {
+                        <tr>
+                            <td>@product.Id</td>
+                            <td>
+                                <input type="text" name="Name" value="@product.ProductName" form="form-@product.Id" class="form-control" />
+                            </td>
+                            <td>
+                                <input type="number" name="Quantity" value="@product.Amount" form="form-@product.Id" class="form-control" />
+                            </td>
+                            <td>
+                                <form asp-action="UpdateProduct" asp-controller="Product" method="post" id="form-@product.Id" class="form-inline d-inline-block">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="Id" value="@product.Id" />
+                                    <button type="submit" class="btn btn-primary" style="background-color: #5A7D9A;">Güncelle</button>
+                                </form>
+                                <form asp-action="DeleteProduct" asp-controller="Product" method="post" class="form-inline d-inline-block ml-2">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="Id" value="@product.Id" />
+                                    <button type="submit" class="btn btn-danger">Sil</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

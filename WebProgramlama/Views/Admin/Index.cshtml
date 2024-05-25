@@ -1,0 +1,107 @@
+﻿@model adminHtmlModel
+
+@{
+    Layout = "_Layout2";
+    ViewData["Title"] = "Admin Panel";
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        <i class="fas fa-check-circle success-icon"></i> @TempData["SuccessMessage"]
+    </div>
+}
+
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h3 class="text-center" style="color: #5A7D9A;">Kullanıcılar</h3>
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Ad</th>
+                        <th>Soyad</th>
+                        <th>Email</th>
+                        <th>Durum</th>
+                        <th>Onay</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model.users)
+                    {
+                        if (user.role == "admin")
+                            continue;
+                        <tr>
+                            <td>@user.FirstName</td>
+                            <td>@user.LastName</td>
+                            <td>@user.Email</td>
+                            <td>@user.role</td>
+                            <td>
+                                @if (user.role == "not validate")
+                                {
+                                    <form asp-action="ApproveUser" method="post" class="d-inline">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="userId" value="@user.Id" />
+                                        <button type="submit" class="btn btn-success">Onayla</button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <form asp-action="notApproveUser" method="post" class="d-inline">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="mail" value="@user.Email" />
+                                        <button type="submit" class="btn btn-danger">Sil</button>
+                                    </form>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <h3 class="text-center" style="color: #5A7D9A;">Ürünler</h3>
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Ürün Adı</th>
+                        <th>Sahip</th>
+                        <th>Miktar</th>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var product in Model.products)
+                    {
+                        <tr>
+                            <td>
+                                <input type="text" name="ProductName" value="@product.ProductName" form="form-@product.Id" class="form-control" />
+                            </td>
+                            <td>@product.ProductOwnerID</td>
+                            <td>
+                                <input type="number" name="Amount" value="@product.Amount" form="form-@product.Id" class="form-control" />
+                            </td>
+                            <td>
+                                <form asp-action="UpdateProduct" asp-controller="Product" method="post" id="form-@product.Id" class="form-inline d-inline-block">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="Id" value="@product.Id" />
+                                    <button type="submit" class="btn btn-primary" style="background-color: #5A7D9A;">Güncelle</button>
+                                </form>
+                                <form asp-action="DeleteProduct" asp-controller="Product" method="post" class="form-inline d-inline-block ml-2">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="Id" value="@product.Id" />
+                                    <button type="submit" class="btn btn-danger">Sil</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // İhtiyaç duyulursa ek JavaScript kodları buraya yazılabilir
+    </script>
+}

@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<section class="py-3" id="contact-form">
+    <div class="container">
+        <h1 class="l-heading"><span style="color: #5A7D9A">Contact</span> Us</h1>
+        <p>Please fill out the form below to contact us</p>
+        <form action="#">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input placeholder="Metehan Veliashvili" type="text" class="form-control" name="name" id="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input placeholder="Metehanbelli8@gmail.com" type="email" class="form-control" name="email" id="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea placeholder="Type Something..." class="form-control" name="message" id="message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-success" id="sign-button">Submit</button>
+        </form>
+    </div>
+</section>
+
+<section id="contact-info" style="background-color: #5A7D9A;" class="text-light py-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <div class="box">
+                    <i class="fas fa-hotel fa-3x mb-3"></i>
+                    <h3>Location</h3>
+                    <p>Kocaeli/Turkey</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="box">
+                    <i class="fas fa-phone fa-3x mb-3"></i>
+                    <h3>Phone Number</h3>
+                    <p>(555) 555-5555</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="box">
+                    <i class="fas fa-envelope fa-3x mb-3"></i>
+                    <h3>Email Address</h3>
+                    <p>webprogramlama@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

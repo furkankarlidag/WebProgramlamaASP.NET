@@ -1,0 +1,36 @@
+﻿@model User
+@{
+    Layout = "userLayout";
+    ViewData["Title"] = "Profil Düzenle";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2 class="text-center mb-4" style="color: #5A7D9A;">Profil Düzenle</h2>
+            <hr>
+            <form asp-action="BilgiGuncelleme" asp-controller="Kullanici" method="post">
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    <label for="firstName" style="color: #5A7D9A;">Adı:</label>
+                    <input type="text" id="firstName" name="FirstName" class="form-control" value="@Model.FirstName" />
+                    <input type="hidden" name="OldFirstName" value="@Model.FirstName" />
+                </div>
+                <div class="form-group">
+                    <label for="lastName" style="color: #5A7D9A;">Soyadı:</label>
+                    <input type="text" id="lastName" name="LastName" class="form-control" value="@Model.LastName" />
+                    <input type="hidden" name="OldLastName" value="@Model.LastName" />
+                </div>
+                <div class="form-group">
+                    <label for="email" style="color: #5A7D9A;">Email:</label>
+                    <input type="email" id="email" name="Email" class="form-control" value="@Model.Email" />
+                    <input type="hidden" name="OldEmail" value="@Model.Email" />
+                </div>
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary" style="background-color: #5A7D9A;">Güncelle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

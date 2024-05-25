@@ -1,0 +1,91 @@
+/* Navbar Renk Düzenlemeleri */
+.navbar {
+  background-color: #5A7D9A;
+}
+.navbar-brand, .nav-link {
+  color: #fff !important; 
+}
+.navbar-brand:hover, .nav-link:hover {
+  color: #d4d4d4 !important; 
+}
+
+/* Hero Bölüm Stil */
+.hero-section {
+  background: url('https://images.unsplash.com/photo-1538080204498-afe921550d75?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center;
+  background-size: cover;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+.hero-section h1 {
+  font-size: 4rem;
+  font-weight: bold;
+}
+.hero-section p {
+  font-size: 1.2rem;
+}
+.hero-section .btn {
+  margin-top: 20px;
+  background-color: #5A7D9A;
+}
+
+#sign-button {
+  background-color: #5A7D9A;
+  transition: background-color 0.3s ease;
+  border: 2px solid transparent;
+}
+
+#sign-button:hover {
+  background-color: #4A6A87;
+  border-color: #FFFFFF;
+}
+
+/* Özellikler Bölüm Stil */
+.features {
+  text-align: center;
+  background-color: #fff;
+}
+.features .feature {
+  padding: 20px;
+  border-radius: 0;
+  margin: 0;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.features .feature.middle {
+  background-color: #5A7D9A;
+  color: #fff;
+}
+.features .feature.middle .icon {
+  color: #fff;
+}
+.features .feature .icon {
+  color: #5A7D9A;
+}
+
+/* Footer Stil */
+footer {
+    background-color: #f8f9fa;
+    text-align: center;
+    padding: 12px 0; /* üst ve alt boşluk ekler */
+    position: relative; /* içindeki elemanların konumunu ayarlamak için */
+}
+
+    
+
+
+.hero-section-solution {
+  background: url('https://images.pexels.com/photos/7176305/pexels-photo-7176305.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center;
+  background-size: cover;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
