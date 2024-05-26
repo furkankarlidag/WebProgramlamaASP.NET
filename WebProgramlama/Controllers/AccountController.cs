@@ -103,6 +103,7 @@ namespace WebProgramlama.Controllers
             var claims = new[]
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Email),
+                new Claim(JwtRegisteredClaimNames.Email, user.Email),  // Email claim ekleniyor
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
@@ -115,6 +116,7 @@ namespace WebProgramlama.Controllers
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
 
         private ClaimsPrincipal ValidateToken(string token)
         {

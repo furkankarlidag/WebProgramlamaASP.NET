@@ -33,6 +33,7 @@ namespace WebProgramlama.Controllers
             _configuration = configuration;
         }
 
+
         public IActionResult Index(string token)
         {
             if (string.IsNullOrEmpty(token))
@@ -46,7 +47,7 @@ namespace WebProgramlama.Controllers
                 return Unauthorized();
             }
 
-            var mail = principal.FindFirstValue(ClaimTypes.Email);
+            var mail = principal.FindFirstValue(ClaimTypes.Email) ?? principal.FindFirstValue(JwtRegisteredClaimNames.Email);
             if (mail == null)
             {
                 mail = mail2;
@@ -59,6 +60,7 @@ namespace WebProgramlama.Controllers
             var kullanici = context.Users.FirstOrDefault(k => k.Email == mail);
             if (kullanici == null)
             {
+                Console.WriteLine("1");
                 return NotFound();
             }
 
@@ -77,6 +79,8 @@ namespace WebProgramlama.Controllers
             ViewBag.Token = token;
             return View(suankiKullanici);
         }
+
+
 
         private ClaimsPrincipal ValidateToken(string token)
         {
