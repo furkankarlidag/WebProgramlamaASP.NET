@@ -81,12 +81,12 @@
                                 <input type="number" name="Amount" value="@product.Amount" form="form-@product.Id" class="form-control" />
                             </td>
                             <td>
-                                <form asp-action="UpdateProduct" asp-controller="Product" method="post" id="form-@product.Id" class="form-inline d-inline-block">
+                                <form asp-action="UpdateProduct" asp-controller="Admin" method="post" id="form-@product.Id" class="form-inline d-inline-block">
                                     @Html.AntiForgeryToken()
                                     <input type="hidden" name="Id" value="@product.Id" />
                                     <button type="submit" class="btn btn-primary" style="background-color: #5A7D9A;">Güncelle</button>
                                 </form>
-                                <form asp-action="DeleteProduct" asp-controller="Product" method="post" class="form-inline d-inline-block ml-2">
+                                <form asp-action="DeleteProduct" asp-controller="Admin" method="post" class="form-inline d-inline-block ml-2">
                                     @Html.AntiForgeryToken()
                                     <input type="hidden" name="Id" value="@product.Id" />
                                     <button type="submit" class="btn btn-danger">Sil</button>
